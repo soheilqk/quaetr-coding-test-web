@@ -1,5 +1,7 @@
 import { Inter } from "next/font/google";
 import type { Metadata } from "next";
+import { ThemeProvider } from "@/contexts/theme-provider";
+import { Header } from "@/components/header";
 import "./globals.css";
 
 const inter = Inter({
@@ -41,7 +43,17 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className} suppressHydrationWarning>
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className="relative flex min-h-screen flex-col">
+            <Header />
+            <main className="flex-1">{children}</main>
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );

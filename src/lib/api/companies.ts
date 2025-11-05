@@ -4,7 +4,7 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000";
 
 /**
  * Fetches trending companies data from the API
- * Uses Next.js 15 fetch with built-in caching and revalidation
+ * Uses fetch with built-in caching and revalidation
  *
  * @returns Promise resolving to companies response data
  * @throws Error if the fetch fails
