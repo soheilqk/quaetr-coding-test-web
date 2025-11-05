@@ -11,8 +11,8 @@ export default function Home() {
     const fetchData = async () => {
       const data = await fetch("/api/companies");
       const data2 = await data.json();
-      console.log(data2);
-      setStuff1(data2);
+      console.log(data2.data);
+      setStuff1(data2.data);
     };
 
     // call the function
