@@ -12,22 +12,8 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Quartr - Trending Companies",
+    default: "Quartr",
     template: "%s | Quartr",
-  },
-  description: "Discover trending companies and their latest financial reports",
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://quartr.com",
-    title: "Quartr - Trending Companies",
-    description: "Discover trending companies and their latest financial reports",
-    siteName: "Quartr",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Quartr - Trending Companies",
-    description: "Discover trending companies and their latest financial reports",
   },
   robots: {
     index: true,

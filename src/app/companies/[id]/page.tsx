@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: CompanyPageProps) {
     const company = await service.getCompanyById(parseInt(id, 10));
 
     return {
-      title: `${company.displayName} | Quartr`,
+      title: company.displayName,
       description: company.description,
       openGraph: {
         title: `${company.displayName} | Quartr`,
