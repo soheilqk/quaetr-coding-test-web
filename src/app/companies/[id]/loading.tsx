@@ -7,7 +7,6 @@ import { Separator } from "@/components/ui/separator";
 export default function Loading() {
   return (
     <div className="container max-w-4xl mx-auto px-6 py-8 space-y-8">
-      {/* Back Button */}
       <Link
         href="/"
         className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
@@ -16,12 +15,10 @@ export default function Loading() {
         Back to companies
       </Link>
 
-      {/* Company Header Skeleton */}
       <CompanyHeaderSkeleton />
 
       <Separator />
 
-      {/* Company Events Skeleton */}
       <CompanyEventsSkeleton />
     </div>
   );

@@ -1,11 +1,8 @@
-"use client";
-
-import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import type { Company } from "@/lib/types/company";
 import { cn } from "@/lib/utils";
-import { useThemeLogo } from "@/hooks/use-theme-logo";
+import { CompanyLogo } from "./CompanyLogo";
 
 interface CompanyCardProps {
   company: Company;
@@ -13,8 +10,6 @@ interface CompanyCardProps {
 }
 
 export function CompanyCard({ company, className }: CompanyCardProps) {
-  const logoUrl = useThemeLogo(company.logoLightUrl, company.logoDarkUrl);
-
   return (
     <Link
       href={`/companies/${company.companyId}`}
@@ -23,18 +18,13 @@ export function CompanyCard({ company, className }: CompanyCardProps) {
         className
       )}
     >
-      {/* Company Logo */}
-      <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-xl bg-muted">
-        <Image
-          src={logoUrl}
-          alt={`${company.displayName} logo`}
-          fill
-          className="object-contain p-2"
-          sizes="48px"
-        />
-      </div>
+      <CompanyLogo
+        logoLightUrl={company.logoLightUrl}
+        logoDarkUrl={company.logoDarkUrl}
+        alt={`${company.displayName} logo`}
+        size="sm"
+      />
 
-      {/* Company Info */}
       <div className="flex-1 min-w-0">
         <h3 className="font-medium text-base text-foreground truncate">
           {company.displayName}
@@ -44,7 +34,6 @@ export function CompanyCard({ company, className }: CompanyCardProps) {
         </p>
       </div>
 
-      {/* Arrow Icon */}
       <ChevronRight className="h-5 w-5 text-muted-foreground transition-transform group-hover:translate-x-0.5 shrink-0" />
     </Link>
   );

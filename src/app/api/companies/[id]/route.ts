@@ -8,12 +8,6 @@ interface RouteContext {
   }>;
 }
 
-/**
- * GET /api/companies/[id]
- * Returns a single company by ID
- *
- * @returns Company object or 404 if not found
- */
 export async function GET(
   request: Request,
   context: RouteContext
@@ -21,25 +15,16 @@ export async function GET(
   const { id } = await context.params;
   const companyId = parseInt(id);
 
-  // Validate ID
   if (isNaN(companyId)) {
-    return NextResponse.json(
-      { error: "Invalid company ID" },
-      { status: 400 }
-    );
+    return NextResponse.json({ error: "Invalid company ID" }, { status: 400 });
   }
 
-  // Find company
   const company = trendingCompanies.find((c) => c.companyId === companyId);
 
   if (!company) {
-    return NextResponse.json(
-      { error: "Company not found" },
-      { status: 404 }
-    );
+    return NextResponse.json({ error: "Company not found" }, { status: 404 });
   }
 
-  // Return company with cache headers
   return NextResponse.json(company, {
     status: 200,
     headers: {

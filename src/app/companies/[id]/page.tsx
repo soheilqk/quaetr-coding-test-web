@@ -42,7 +42,6 @@ export default async function CompanyPage({ params }: CompanyPageProps) {
 
   return (
     <div className="container max-w-4xl mx-auto px-6 py-8 space-y-8">
-      {/* Back Button */}
       <Link
         href="/"
         className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
@@ -51,12 +50,10 @@ export default async function CompanyPage({ params }: CompanyPageProps) {
         Back to companies
       </Link>
 
-      {/* Company Header */}
       <CompanyHeader company={company} />
 
       <Separator />
 
-      {/* Company Events */}
       <CompanyEvents events={company.events} />
     </div>
   );

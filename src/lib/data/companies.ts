@@ -1,8 +1,5 @@
 import type { Company } from "../types/company";
 
-/**
- * Mock data for trending companies
- */
 export const trendingCompanies: Company[] = [
   {
     companyId: 1,

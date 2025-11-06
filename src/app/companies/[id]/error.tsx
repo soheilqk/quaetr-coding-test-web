@@ -25,7 +25,6 @@ export default function Error({ error, reset }: ErrorProps) {
 
   return (
     <div className="container max-w-2xl mx-auto px-6 py-8">
-      {/* Back Button */}
       <Link
         href="/"
         className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8"
@@ -50,7 +49,6 @@ export default function Error({ error, reset }: ErrorProps) {
         </CardHeader>
 
         <CardContent className="space-y-4">
-          {/* Error Details (only in development) */}
           {process.env.NODE_ENV === "development" && (
             <div className="rounded-lg bg-muted p-4">
               <p className="text-sm font-mono text-muted-foreground break-all">
@@ -64,7 +62,6 @@ export default function Error({ error, reset }: ErrorProps) {
             </div>
           )}
 
-          {/* Actions */}
           <div className="flex flex-wrap gap-3">
             <Button onClick={reset} className="gap-2">
               <RefreshCw className="h-4 w-4" />

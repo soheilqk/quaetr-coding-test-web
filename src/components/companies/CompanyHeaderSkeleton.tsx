@@ -3,7 +3,6 @@ import { Skeleton } from "@/components/ui/skeleton";
 export function CompanyHeaderSkeleton() {
   return (
     <div className="space-y-6">
-      {/* Logo and Name Skeleton */}
       <div className="flex items-start gap-6">
         <Skeleton className="h-20 w-20 shrink-0 rounded-2xl" />
 
@@ -17,14 +16,12 @@ export function CompanyHeaderSkeleton() {
         </div>
       </div>
 
-      {/* Description Skeleton */}
       <div className="space-y-2">
         <Skeleton className="h-4 w-full" />
         <Skeleton className="h-4 w-full" />
         <Skeleton className="h-4 w-3/4" />
       </div>
 
-      {/* Links Skeleton */}
       <div className="flex flex-wrap gap-3">
         <Skeleton className="h-10 w-40" />
         <Skeleton className="h-10 w-36" />
