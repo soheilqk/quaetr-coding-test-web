@@ -8,7 +8,7 @@ export default async function Home() {
   const companies = await service.getTrendingCompanies();
 
   return (
-    <div className="container max-w-2xl mx-auto px-6 py-8">
+    <div className="container max-w-4xl mx-auto px-6 py-8">
       <CompanyList title="Trending companies" companies={companies} />
     </div>
   );

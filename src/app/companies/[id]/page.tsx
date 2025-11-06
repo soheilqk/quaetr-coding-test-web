@@ -31,6 +31,16 @@ export async function generateMetadata({ params }: CompanyPageProps) {
     return {
       title: `${company.displayName} | Quartr`,
       description: company.description,
+      openGraph: {
+        title: `${company.displayName} | Quartr`,
+        description: company.description,
+        images: [company.logoLightUrl],
+      },
+      twitter: {
+        title: `${company.displayName} | Quartr`,
+        description: company.description,
+        images: [company.logoLightUrl],
+      },
     };
   } catch (error) {
     return {
