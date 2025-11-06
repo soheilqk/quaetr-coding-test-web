@@ -1,16 +1,26 @@
-import { NextResponse } from "next/server";
 import type { CompaniesResponse } from "@/lib/types/company";
-import { trendingCompanies } from "@/lib/data/companies";
+import { getCompanyService } from "@/lib/services/company-service";
+import { logger } from "@/lib/utils/logger";
+import { handleApiError } from "@/lib/utils/error-handler";
+import { apiSuccess, CACHE_HEADERS } from "@/lib/utils/api-response";
 
 export async function GET() {
-  const response: CompaniesResponse = {
-    data: trendingCompanies,
-  };
+  try {
+    const service = getCompanyService();
+    const companies = await service.getTrendingCompanies();
 
-  return NextResponse.json(response, {
-    status: 200,
-    headers: {
-      "Cache-Control": "public, s-maxage=60, stale-while-revalidate=120",
-    },
-  });
+    logger.info("Successfully fetched trending companies", {
+      count: companies.length,
+    });
+
+    const response: CompaniesResponse = {
+      data: companies,
+    };
+
+    return apiSuccess(response, {
+      cacheControl: CACHE_HEADERS.DEFAULT,
+    });
+  } catch (error) {
+    return handleApiError(error, "GET /api/companies");
+  }
 }

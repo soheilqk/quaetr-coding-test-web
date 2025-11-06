@@ -1,11 +1,5 @@
-/**
- * Company event fiscal period type
- */
 export type FiscalPeriod = "Q1" | "Q2" | "Q3" | "Q4";
 
-/**
- * Represents a company's quarterly or annual event
- */
 export interface CompanyEvent {
   eventId: number;
   eventTitle: string;
@@ -18,16 +12,10 @@ export interface CompanyEvent {
   qnaTimestamp: number | null;
 }
 
-/**
- * Company branding color settings
- */
 export interface ColorSettings {
   brandColor: string;
 }
 
-/**
- * Represents a trending company with all associated metadata
- */
 export interface Company {
   companyId: number;
   companyName: string;
@@ -46,9 +34,6 @@ export interface Company {
   isins: string[];
 }
 
-/**
- * API response structure for companies endpoint
- */
 export interface CompaniesResponse {
   data: Company[];
 }

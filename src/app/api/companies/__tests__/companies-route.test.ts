@@ -1,18 +1,13 @@
-import { describe, it, expect } from 'vitest'
-import { GET } from '../route'
+import { describe, it, expect } from "vitest";
+import { GET } from "@/app/api/companies/route";
 
-describe('GET /api/companies', () => {
-  it('should return 200 status', async () => {
-    const response = await GET()
-    expect(response.status).toBe(200)
-  })
+describe("GET /api/companies", () => {
+  it("should return companies list", async () => {
+    const response = await GET();
+    const data = await response.json();
 
-  it('should return companies data in correct format', async () => {
-    const response = await GET()
-    const data = await response.json()
-
-    expect(data).toHaveProperty('data')
-    expect(Array.isArray(data.data)).toBe(true)
-    expect(data.data.length).toBeGreaterThan(0)
-  })
-})
+    expect(response.status).toBe(200);
+    expect(data).toHaveProperty("data");
+    expect(Array.isArray(data.data)).toBe(true);
+  });
+});

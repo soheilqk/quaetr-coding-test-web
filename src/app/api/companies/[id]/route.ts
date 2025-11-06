@@ -1,6 +1,8 @@
-import { NextResponse } from "next/server";
-import { trendingCompanies } from "@/lib/data/companies";
 import type { Company } from "@/lib/types/company";
+import { getCompanyService } from "@/lib/services/company-service";
+import { logger } from "@/lib/utils/logger";
+import { handleApiError } from "@/lib/utils/error-handler";
+import { apiSuccess, CACHE_HEADERS } from "@/lib/utils/api-response";
 
 interface RouteContext {
   params: Promise<{
@@ -8,27 +10,24 @@ interface RouteContext {
   }>;
 }
 
-export async function GET(
-  request: Request,
-  context: RouteContext
-): Promise<NextResponse<Company | { error: string }>> {
+export async function GET(request: Request, context: RouteContext) {
   const { id } = await context.params;
-  const companyId = parseInt(id);
 
-  if (isNaN(companyId)) {
-    return NextResponse.json({ error: "Invalid company ID" }, { status: 400 });
+  try {
+    const companyId = parseInt(id, 10);
+
+    const service = getCompanyService();
+    const company = await service.getCompanyById(companyId);
+
+    logger.info("Successfully fetched company", {
+      companyId: company.companyId,
+      companyName: company.displayName,
+    });
+
+    return apiSuccess<Company>(company, {
+      cacheControl: CACHE_HEADERS.DEFAULT,
+    });
+  } catch (error) {
+    return handleApiError(error, `GET /api/companies/${id}`);
   }
-
-  const company = trendingCompanies.find((c) => c.companyId === companyId);
-
-  if (!company) {
-    return NextResponse.json({ error: "Company not found" }, { status: 404 });
-  }
-
-  return NextResponse.json(company, {
-    status: 200,
-    headers: {
-      "Cache-Control": "public, s-maxage=60, stale-while-revalidate=120",
-    },
-  });
 }

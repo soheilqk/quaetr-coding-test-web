@@ -1,1 +1,0 @@
-export { getCompanies } from "./companies";
