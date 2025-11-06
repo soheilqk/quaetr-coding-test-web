@@ -1,5 +1,9 @@
 # Quartr Trending Companies
 
+## Live Demo
+
+**Demo:** [https://quaetr-coding-test.vercel.app/](https://quaetr-coding-test.vercel.app/)
+
 ## Getting Started
 
 ### Prerequisites
@@ -45,3 +49,9 @@ npm run test:watch
 # Run tests with coverage
 npm run test:coverage
 ```
+
+### Deployment
+
+**Deployed on Vercel**
+
+> Automatic deployments enabled for PRs and merges to main branch.
