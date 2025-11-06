@@ -1,6 +1,3 @@
-/**
- * CompanySkeleton component displays loading placeholder
- */
 export function CompanySkeleton() {
   return (
     <div className="flex items-center gap-4 py-4 border-b border-gray-200">
@@ -19,9 +16,6 @@ export function CompanySkeleton() {
   );
 }
 
-/**
- * CompanyListSkeleton displays multiple skeleton items
- */
 export function CompanyListSkeleton() {
   return (
     <div>

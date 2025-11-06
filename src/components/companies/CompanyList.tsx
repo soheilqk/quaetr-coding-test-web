@@ -9,12 +9,6 @@ interface CompanyListProps {
   className?: string;
 }
 
-/**
- * CompanyList component displays a list of companies with an optional title
- * @param title - The title of the list
- * @param companies - The list of companies
- * @param className - The class name of the list
- */
 export function CompanyList({ title, companies, className }: CompanyListProps) {
   if (companies.length === 0) {
     return (
